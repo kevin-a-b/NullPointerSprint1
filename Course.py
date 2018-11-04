@@ -1,7 +1,6 @@
 
 class Course:
-    instructor = None
-    TA = None
+
     def __init__(self,cCode, cName,inst =None,T = None):
         self.classCode = cCode
         self.className = cName
