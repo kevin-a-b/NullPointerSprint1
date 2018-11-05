@@ -29,6 +29,11 @@ class Account:
             raise Exception("Account Creation Error: Wrong account type")
             return
 
+        # account flag must be 0-3
+        if stringList[7]<0 or stringList>3:
+            raise Exception("Account Creation Error: Invalid permissions given")
+            return
+
         if stringList[7] is int and stringList[7]<0 or stringList[7]>3:
             raise Exception("Account Creation Error: Invalid account type")
             return
@@ -39,3 +44,24 @@ class Account:
         # write it to memory
         Memory.write_account(newAccount)
         return
+
+    def delete_account(self, stringList):
+
+        # must have the right amount of arguments
+        if stringList.amount() != 1:
+            raise Exception("Account Deletion Error: Wrong amount of information passed")
+            return
+
+        # must have the right account permissions
+        if self.accountFlag != 0:
+            raise Exception("Account Deletion Error: You don't have permission")
+            return
+
+        # username must be a str
+        if stringList[0] is not str:
+            raise Exception("Account Deletion Error: Incorrect username")
+            return
+
+        Memory.delete_account(stringList[0])
+        return
+
