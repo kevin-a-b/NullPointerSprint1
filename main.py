@@ -8,20 +8,21 @@ cmd = {}
 
 
 def set_user(user):  # Set current user
-    global current_user # set global so it can be accessed from other methods in this file
+    global current_user  # set global so it can be accessed from other methods in this file
     current_user = user
 
 
-def getuser():  # Get current user(for external files) PEP8 makes
+def getuser():  # Get current user
     return current_user
 
 
 class Project:
     def __init__(self):
+        set_user(None)
         self.commands = cmd
 
-    def command(self, strcmd):
-        split = strcmd.split()
+    def command(self, string_command):
+        split = string_command.split()
         return self.commands[split[0]](split[1:])
 
     def createClass(self,cName):
@@ -52,10 +53,11 @@ def login(user_pass):  # user_pass short for list contained username and passwor
         return "Another User is logged in"
     else:
         user = Memory.read_account(user_pass[0], user_pass[1])
-    if user is None:
-        return "Error"
-    set_user(user)
-    return "Login Success"
+        print(user)
+        if user is None:
+            return "Error"
+        set_user(user)
+        return "Login Success"
 
 
 cmd["login"] = login  # Add login command to command list

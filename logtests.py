@@ -4,7 +4,6 @@ import unittest
 
 console = Project()
 
-
 class TestLogin(unittest.TestCase):
     def test_login1(self):  # No username and password entered, no user logged in. Should return error
         self.assertEqual(console.command("login"), "Error")
@@ -15,7 +14,7 @@ class TestLogin(unittest.TestCase):
     def test_login3(self):  # only password, no user logged in. Should return error
         self.assertEqual(console.command("login password"), "Error")
 
-    def test_login4(self):  # both, no user logged in. Should pass
+    def test_login4(self):  # both, no user logged in. Should pass(Will fail until memory is complete)
         self.assertEqual(console.command("login username password"), "Login Success")
 
     def test_login5(self):  # No username and password entered, user logged in. Should return error
@@ -45,7 +44,7 @@ class TestLogin(unittest.TestCase):
     def test_logoff3(self):  # Someone passes extra arguements
         self.assertEqual(console.command("logout a b c"), "Error")
 
-    def test_loginLogoff(self):
+    def test_loginLogoff(self):  # (Will fail until memory is complete)
         main.set_user(None)  # Just setting it to something for testing
         self.assertEqual(console.command("login username password"), "Login Success")
         self.assertEqual(console.command("logout"), "Logout Success")
