@@ -7,7 +7,8 @@ class TestAccountMethods(unittest.TestCase):
 
     def setUp(self):
         self.superAccount = Account('SuperUser', 'SuperPass', 'SuperName', 'SuperAdd', 'SuperEmail', "1234567980", 0)
-        self.TAAccount  = Account('TAUser', 'TAPass', 'TAName', 'TAAdd', 'TAEmail', '1234567890', 3)
+        self.TAAccount = Account('TAUser', 'TAPass', 'TAName', 'TAAdd', 'TAEmail', '1234567890', 3)
+        self.admin_test = Account('admin', 'password', 'first last', '123 main st', 'admin@aol.com', '4141234567', 0);
 
     def test_createAccount_short_list_length(self):
         with self.assertRaises(Exception):
@@ -48,15 +49,6 @@ class TestAccountMethods(unittest.TestCase):
     def test_deleteAccount_long_list(self):
         with self.assertRaises(Exception):
             Account.delete_account(self.superAccount, [0, 1, 2])
-
-    def test_username1(self):
-        self.assertEqual(user.edit_account_username("Snowman"), "it is the current username")
-
-    def test_username2(self):
-        self.assertEqual(user.edit_account_username("Fireman"), "username updated")
-
-    def test_username3(self):
-        self.assertEqual(user.edit_account_username(), "plz enter something")
 
     def test_password1(self):
         self.assertEqual(user.edit_account_password("20181225"), "it is the current password")
