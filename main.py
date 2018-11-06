@@ -1,16 +1,17 @@
 from Course import Course
 from memory import Memory
+from account import Account
 
-classlist = []
-
+x = 2
 cmd = {}
 # Command list for main class
 
+a = Account("","username","password","address","Email","Phone",3)
 
 def set_user(user):  # Set current user
     global current_user  # set global so it can be accessed from other methods in this file
     current_user = user
-
+set_user(a)
 
 def getuser():  # Get current user
     return current_user
@@ -25,25 +26,15 @@ class Project:
         split = string_command.split()
         return self.commands[split[0]](split[1:])
 
-    def createClass(self,cName):
-        classlist.append(Course(classlist.__len__(), cName))
-    
-    def assign_instructor_class(self, instructor,id):
-        classlist[id].setInstructor(instructor)
-    
-    def unassign_instructor_class(self,id):
-        classlist[id].setInstructor("No Instructor")
-    
-    def assign_TA_class(self,T,id):
-        classlist[id].setTA(T)
-    
-    def unassign_TA_class(self, id):
-        classlist[id].setTA["No TA"]
-    
-    def printAllClasses(self):
-        for x in range(0,len(classlist)):
-            print(classlist[x].printInfo())
+    inCommand = "start"
 
+    while inCommand[0] != "exit":
+        i = input("Input something\n")
+        inCommand = i.split(" ")
+        if inCommand[0] == "exit":
+            break
+        else:
+            getuser().myDict[inCommand[0]](current_user,inCommand)
 
 def login(user_pass):  # user_pass short for list contained username and password
     user = current_user  # For some reason we can't directly use current_user but we can set stuff to it
