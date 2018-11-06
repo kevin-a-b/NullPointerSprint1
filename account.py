@@ -1,5 +1,6 @@
 from memory import Memory
-
+from Course import Course
+classlist = []
 class Account:
 
     def __init__(self, username, password, name, address, email, phonenumber, accountFlag):
@@ -11,6 +12,27 @@ class Account:
         self.email = email
         self. phonenumber = phonenumber
         self.accountFlag = accountFlag
+
+    def createClass(self, stringList):
+        classlist.append(Course(classlist.__len__(), stringList[1]))
+    def deleteClass(self, stringList):
+        classlist.remove(classlist[int(stringList[1])])
+
+    def assign_instructor_class(self, instructor, id):
+        classlist[id].setInstructor(instructor)
+
+    def unassign_instructor_class(self, id):
+        classlist[id].setInstructor("No Instructor")
+
+    def assign_TA_class(self, T, id):
+        classlist[id].setTA(T)
+
+    def unassign_TA_class(self, id):
+        classlist[id].setTA["No TA"]
+
+    def printAllClasses(self, stringlist):
+        for x in range(0, len(classlist)):
+            print(classlist[x].printInfo())
 
     def create_account(self, stringList):
 
@@ -118,3 +140,8 @@ class Account:
         else:
             self.phonenumber = new_phonenumber
             print("phonenumber updated")
+ 
+myDict = {"createaccount": "createAccount","deleteaccount": "deleteAccount", "createclass": createClass,
+              "editaccount": "editaccounts(username)", "printallclass": printAllClasses, "deleteclass": deleteClass}
+
+
