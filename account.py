@@ -34,7 +34,7 @@ class Account:
             raise Exception("Account Creation Error: Invalid permissions given")
             return
 
-        if stringList[7] is int and stringList[7]<0 or stringList[7]>3:
+        if stringList[7] is int and stringList[7] < 0 or stringList[7] > 3:
             raise Exception("Account Creation Error: Invalid account type")
             return
 
@@ -46,7 +46,6 @@ class Account:
         return
 
     def delete_account(self, stringList):
-
         # must have the right amount of arguments
         if stringList.amount() != 1:
             raise Exception("Account Deletion Error: Wrong amount of information passed")
@@ -65,56 +64,68 @@ class Account:
         Memory.delete_account(stringList[0])
         return
 
-    def edit_account_username(self, new_username):
-        if self.username == new_username:
-            print("it is the current username")
-        elif new_username == None:
-            print("plz enter something")
+    # edit methods work for both admin/supervisor edits and self edits
+    # stringList[0] = username, stringList[1] = updated_name
+    def edit_account_password(self, string_list):
+        if self.username == string_list[0] or self.accountFlag == 0 or self.accountFlag == 1:
+            if self.password == string_list[1]:
+                print("it is the current password")
+            elif string_list[1] is None:
+                print("please enter something")
+            else:
+                self.password = string_list[1]
+                print("password updated")
         else:
-            self.username = new_username
-            print("username updated")
+            print("You don't have permissions to edit this")
 
-    def edit_account_password(self, new_password):
-        if self.password == new_password:
-            print("it is the current password")
-        elif new_username == None:
-            print("plz enter something")
+    # stringList[0] = username, stringList[1] = updated_name
+    def edit_account_name(self, string_list):
+        if self.username == string_list[0] or self.accountFlag == 0 or self.accountFlag == 1:
+            if self.name == string_list[1]:
+                print("it is the current name")
+            elif string_list[1] is None:
+                print("please enter something")
+            else:
+                self.name = string_list[1]
+                print("name updated")
         else:
-            self.password = new_password
-            print("password updated")
+            print("You don't have permissions to edit this")
 
-    def edit_account_name(self, new_name):
-        if self.name == new_name:
-            print("it is the current name")
-        elif new_username == None:
-            print("plz enter something")
+    # stringList[0] = username, stringList[1] = updated_address
+    def edit_account_address(self, string_list):
+        if self.username == string_list[0] or self.accountFlag == 0 or self.accountFlag == 1:
+            if self.address == string_list[1]:
+                print("it is the current address")
+            elif string_list[1] is None:
+                print("please enter something")
+            else:
+                self.address = string_list[1]
+                print("address updated")
         else:
-            self.name = new_name
-            print("name updated")
+            print("You don't have permissions to edit this")
 
-    def edit_account_address(self, new_address):
-        if self.address == new_address:
-            print("it is the current address")
-        elif new_username == None:
-            print("plz enter something")
+    # stringList[0] = username, stringList[1] = updated_email
+    def edit_account_email(self, string_list):
+        if self.username == string_list[0] or self.accountFlag == 0 or self.accountFlag == 1:
+            if self.email == string_list[1]:
+                print("it is the current email")
+            elif string_list[1] is None:
+                print("please enter something")
+            else:
+                self.email = string_list[1]
+                print("email updated")
         else:
-            self.address = new_address
-            print("address updated")
+            print("You don't have permissions to edit this")
 
-    def edit_account_email(self, new_email):
-        if self.mail == new_email:
-            print("it is the current email")
-        elif new_username == None:
-            print("plz enter something")
+    # stringList[0] = username, stringList[1] = updated_phone_number
+    def edit_account_phonenumber(self, string_list):
+        if self.username == string_list[0] or self.accountFlag == 0 or self.accountFlag == 1:
+            if self.phonenumber == string_list[1]:
+                print("it is the current phone number")
+            elif string_list[1] is None:
+                print("please enter something")
+            else:
+                self.phonenumber = string_list[1]
+                print("phone number updated")
         else:
-            self.email = new_email
-            print("email updated")
-
-    def edit_account_phonenumber(self, new_phonenumber):
-        if self.phonenumber == new_phonenumber:
-            print("it is the current phonenumber")
-        elif new_username == None:
-            print("plz enter something")
-        else:
-            self.phonenumber = new_phonenumber
-            print("phonenumber updated")
+            print("You don't have permissions to edit this")
