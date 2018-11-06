@@ -56,6 +56,7 @@ class Account:
             raise Exception("Account Creation Error: Invalid permissions given")
             return
 
+        # check if passed account flag is correct
         if stringList[7] is int and stringList[7]<0 or stringList[7]>3:
             raise Exception("Account Creation Error: Invalid account type")
             return
@@ -83,6 +84,7 @@ class Account:
             raise Exception("Account Deletion Error: Incorrect username")
             return
 
+        # deletes account from memory
         Memory.delete_account(stringList[0])
         return
 
