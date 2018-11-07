@@ -154,5 +154,5 @@ class Account:
         else:
             print("You don't have permissions to edit this")
 
-myDict = {"createaccount": "createAccount","deleteaccount": "deleteAccount", "createclass": createClass,
-              "editaccount": "editaccounts(username)", "printallclass": printAllClasses, "deleteclass": deleteClass}
+myDict = {"createaccount": "createAccount","deleteaccount": "deleteAccount", "createclass": "createClass",
+              "editaccount": "editaccounts(username)", "printallclass": "printAllClasses", "deleteclass": "deleteClass"}
