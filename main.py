@@ -21,20 +21,32 @@ class Project:
     def __init__(self):
         set_user(None)
         self.commands = cmd
+    #displays all commands available to the user
+    def help(self):
+        print("createaccount <username> <password> \n"
+              "deleteaccount <username> \n"
+              "createclass <classname>\n"
+              "printallclass \n"
+              "deleteclass <classid#> \n"
+              "addta <taname> <classid#>\n"
+              "removeta <classid#>\n"
+              "addinstructor <instructor name> <classid#>\n"
+              "removeinstructor <classid#>\n")
 
-    def command(self, string_command):
-        split = string_command.split()
-        return self.commands[split[0]](split[1:])
-
+    #loop for command line interface
     inCommand = "start"
-
     while inCommand[0] != "exit":
-        i = input("Input something\n")
+        i = input("Please Input a Command,type 'help' for a list of commands\n")
         inCommand = i.split(" ")
         if inCommand[0] == "exit":
             break
+        elif inCommand[0] =="help":
+            help("")
         else:
-            getuser().myDict[inCommand[0]](current_user,inCommand)
+            try:
+                getuser().myDict[inCommand[0]](current_user,inCommand)
+            except:
+                print("error has occurred, type in a recognized command")
 
 
 def login(user_pass):  # user_pass short for list contained username and password
