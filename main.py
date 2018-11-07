@@ -5,7 +5,7 @@ from account import Account
 x = 2
 cmd = {}
 # Command list for main class
-
+#genericaccount
 a = Account("","username","password","address","Email","Phone",3)
 
 def set_user(user):  # Set current user
