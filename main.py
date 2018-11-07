@@ -11,7 +11,7 @@ a = Account("","username","password","address","Email","Phone",3)
 def set_user(user):  # Set current user
     global current_user  # set global so it can be accessed from other methods in this file
     current_user = user
-set_user(a)
+    set_user(a)
 
 def getuser():  # Get current user
     return current_user
@@ -36,6 +36,7 @@ class Project:
         else:
             getuser().myDict[inCommand[0]](current_user,inCommand)
 
+
 def login(user_pass):  # user_pass short for list contained username and password
     user = current_user  # For some reason we can't directly use current_user but we can set stuff to it
     if len(user_pass) != 2:  # If wrong amount of arguments
@@ -44,7 +45,6 @@ def login(user_pass):  # user_pass short for list contained username and passwor
         return "Another User is logged in"
     else:
         user = Memory.read_account(user_pass[0], user_pass[1])
-        print(user)
         if user is None:
             return "Error"
         set_user(user)
