@@ -1,6 +1,7 @@
 from memory import Memory
 from Course import Course
 classlist = []
+amtClass = 0
 class Account:
 
     def __init__(self, username, password, name, address, email, phonenumber, accountFlag):
@@ -13,27 +14,52 @@ class Account:
         self. phonenumber = phonenumber
         self.accountFlag = accountFlag
 
+    #creates a new class, passes a string list that contains the instructor name
+    #increments the amtClass variable so overwriting classlist courses is avoided if something in middle is removed
     def createClass(self, stringList):
-        classlist.append(Course(classlist.__len__(), stringList[1]))
+        global amtClass
+        try:
+            classlist.append(Course(amtClass, stringList[1]))
+        except:
+           print("Command received, class name invalid")
+           return
+        amtClass += 1
+    #deletes class at the number given when commanded
     def deleteClass(self, stringList):
-        classlist.remove(classlist[int(stringList[1])])
+        global amtClass
+        try:
+            classlist.remove(classlist[int(stringList[1])])
 
-    def assign_instructor_class(self, instructor, id):
-        classlist[id].setInstructor(instructor)
-
-    def unassign_instructor_class(self, id):
-        classlist[id].setInstructor("No Instructor")
-
-    def assign_TA_class(self, T, id):
-        classlist[id].setTA(T)
-
-    def unassign_TA_class(self, id):
-        classlist[id].setTA["No TA"]
-
+        except:
+            print("IndexError: List index out of range: tried to delete a class that doesnt exit")
+    def assign_instructor_class(self, stringList):
+       try:
+           classlist[int(stringList[2])].setInstructor(stringList[1])
+       except:
+           print("Error: cant assign instructor to class")
+    
+    def unassign_instructor_class(self, stringList):
+        try:
+            classlist[int(stringList[1])].setInstructor("No Instructor")
+        except:
+            print("Error: cant remove instructor from that class please retry")
+    
+    def assign_TA_class(self, stringList):
+        try:
+            classlist[int(stringList[2])].setTA(stringList[1])
+        except:
+            print("Error Assign TA: TA failed to be assigned")
+    
+    def unassign_TA_class(self, stringList):
+        try:
+            classlist[int(stringList[1])].setTA("No TA")
+        except:
+            print("Failed to remove TA from class")
+    
     def printAllClasses(self, stringlist):
         for x in range(0, len(classlist)):
             print(classlist[x].printInfo())
-
+            
     def create_account(self, stringList):
 
         # must have the right amount of arguments
