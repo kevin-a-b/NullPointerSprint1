@@ -41,4 +41,4 @@ class Course:
         return "\nClass Code:" + str(self.getClassCode())\
                + "\nClass Name: " + self.getClassName() \
                + "\nProfessor: " + self.getInstructor()\
-               +"\nTeachers Assistant: " + self.getTA()
+               +"\nTeachers Assistant: " + self.getTA() + "\n"
