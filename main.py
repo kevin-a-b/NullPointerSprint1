@@ -11,7 +11,7 @@ a = Account("","username","password","address","Email","Phone",3)
 def set_user(user):  # Set current user
     global current_user  # set global so it can be accessed from other methods in this file
     current_user = user
-    set_user(a)
+    
 
 def getuser():  # Get current user
     return current_user
@@ -34,6 +34,7 @@ class Project:
               "removeinstructor <classid#>\n")
 
     #loop for command line interface
+    set_user(a)
     inCommand = "start"
     while inCommand[0] != "exit":
         i = input("Please Input a Command,type 'help' for a list of commands\n")
